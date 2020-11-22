@@ -18,7 +18,7 @@ window.onload = function(){
 	if(em_name!='null'){
 		document.querySelector('#em_name').value = em_name;
 	}
-	document.querySelector('[name="search_type][value='+search_type+']').checked = true;
+	document.querySelector('[name=search_type][value='+search_type+']').checked = true;
 	document.querySelector('#di_num').value = di_num;
 	document.querySelector('#di_name').value = di_name;
 	checkSearchType(document.querySelector('[name=search_type]:checked'));
