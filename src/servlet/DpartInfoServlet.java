@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.DepartinfoBean;
+import service.DepartinfoService;
+import service.impl.DepartinfoServiceImpl;
 
 
 @WebServlet("/depart/*")
 public class DpartInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	DepartinfoService departinfoService = new DepartinfoServiceImpl();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DepartinfoBean dib = new DepartinfoBean();
-		request.setAttribute("dib", dib);
-		RequestDispatcher rd = request.getRequestDispatcher("/views/di-list");
+		String targetUrl = "/views/di-list";
+		if("/depart/list".equals(request.getRequestURI())) {
+			request.setAttribute("diList", departinfoService.selectDepartinfoList(null));
+		}
+		RequestDispatcher rd = request.getRequestDispatcher(targetUrl);
 		rd.forward(request, response);
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

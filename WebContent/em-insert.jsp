@@ -85,6 +85,7 @@ try{
 </select><br>
 사원아이디 : <input type="text" name="em_id"><br>
 사원비밀번호 : <input type="password" name="em_pwd"><br>
+<button>사원 등록</button>
 </form>
 <a href="/em-list.jsp"><button>사원 리스트</button></a>
 </body>
